@@ -27,7 +27,7 @@ var bot= {
       }
       list.push([(his[t1-1]/3)|0,dist]);
     }
-    list.sort(function(a,b){return b[1]-a[1];});
+    list.sort(function(a,b){return a[1]-b[1];});
     self.postMessage({log:list});
     
     var count=[0,0,0];
