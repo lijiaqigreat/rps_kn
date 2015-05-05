@@ -28,7 +28,7 @@ var bot= {
         }
         x*=param.decay;
       }
-      list.push([(his[t1-1]/3)|0,dist,t2]);
+      list.push([(his[t1-1]/3)|0,dist,t1]);
     }
     list.sort(function(a,b){return a[1]-b[1];});
     self.postMessage({log:list});
