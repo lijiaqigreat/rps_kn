@@ -38,6 +38,7 @@ var bot= {
   update:function(h1,h0,dt)
   {
 
+    var his=this._private.history;
     //update history
     for(i=param.max_level-2;i>=0;i--)
     {
