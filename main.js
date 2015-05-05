@@ -1,5 +1,6 @@
 var default_param={
   max_level:20,
+  decay:0.9,
   weight:[5,2,1]
 };
 var param=default_param;
@@ -17,19 +18,22 @@ var bot= {
     var list=[];
     for(var t1=1;t1<his.length;t1++){
       var dist=0;
+      var x=1;
       for(var t2=0;t2<his.length;t2++){
         if(his[t2]!==his[t1]){
-          dist++;
+          dist+=x;
         }
+        x*=param.decay;
       }
-      list.push([his[t1-1],dist]);
+      list.push([(his[t1-1]/3)|0,dist]);
     }
     list.sort(function(a,b){return b[1]-a[1];});
     var count=[0,0,0];
     list.forEach(function(e,i){
       count[e[0]]+=param.weight[i]|0;
     });
-    return count[0]>count[1]?(count[0]>count[2]?0:2):(count[1]>count[2]?1:2);
+    var m= count[0]>count[1]?(count[0]>count[2]?0:2):(count[1]>count[2]?1:2);
+    return (m+1)%3;
   },
   update:function(h1,h0,dt)
   {
