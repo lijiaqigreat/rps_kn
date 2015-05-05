@@ -20,12 +20,15 @@ var bot= {
       var dist=0;
       var x=1;
       for(var t2=0;t2<his.length;t2++){
-        if(his[t2]!==his[t1]){
+        if((his[t2]%3)!==(his[t1]%3)){
+          dist+=x;
+        }
+        if((his[t2]/3|0)!==(his[t1]/3|0)){
           dist+=x;
         }
         x*=param.decay;
       }
-      list.push([(his[t1-1]/3)|0,dist]);
+      list.push([(his[t1-1]/3)|0,dist,t2]);
     }
     list.sort(function(a,b){return a[1]-b[1];});
     self.postMessage({log:list});
