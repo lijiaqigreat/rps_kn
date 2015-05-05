@@ -20,10 +20,10 @@ var bot= {
       var dist=0;
       var x=1;
       for(var t2=0;t2<his.length;t2++){
-        if((his[t2+t1]%3)!==(his[t1]%3)){
+        if((his[t2+t1]%3)!==(his[t2]%3)){
           dist+=x;
         }
-        if((his[t2+t1]/3|0)!==(his[t1]/3|0)){
+        if((his[t2+t1]/3|0)!==(his[t2]/3|0)){
           dist+=x;
         }
         x*=param.decay;
